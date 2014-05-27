@@ -22,6 +22,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 namespace GRT{
 
+using ::isnan;
+using ::isinf;
+
 //Register the ANBC module with the Classifier base class
 RegisterClassifierModule< ANBC > ANBC::registerModule("ANBC");
 
@@ -231,7 +234,7 @@ bool ANBC::predict_(VectorDouble &inputVector){
         classLikelihoods[k] = classDistances[k];
         
         //If the distances are very far away then they could be -inf or nan so catch this so the sum still works
-        if( std::isinf(classLikelihoods[k]) || std::isnan(classLikelihoods[k]) ) classLikelihoods[k] = -10000;
+        if( isinf(classLikelihoods[k]) || isnan(classLikelihoods[k]) ) classLikelihoods[k] = -10000;
         
         //Make the 
         classLikelihoods[k] = exp( classLikelihoods[k] );

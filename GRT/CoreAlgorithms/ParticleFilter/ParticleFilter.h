@@ -35,7 +35,11 @@
 #include "Particle.h"
 #include "../../Util/GRTCommon.h"
 
+#include <cmath>
+
 namespace GRT{
+
+using ::isinf;
 
 template<class PARTICLE,class SENSOR_DATA>
 class ParticleFilter{
@@ -509,8 +513,8 @@ protected:
         numDeadParticles = 0;
         for(unsigned int i=0; i<numParticles; i++){
             wNorm += particles[i].w;
-            
-            if( std::isinf( particles[i].w ) ){
+
+            if( isinf( particles[i].w ) ){
                 cout << "particle is inf!\n";
                 numDeadParticles++;
             }
@@ -522,7 +526,7 @@ protected:
             return true;
         }
         
-        if( std::isinf(wNorm) ){
+        if( isinf(wNorm) ){
             if( verbose )
                 warningLog << "WARNING: Weight norm is INF!" << endl;
             return true;

@@ -21,7 +21,10 @@
 #include "DTW.h"
 
 namespace GRT{
-    
+
+using ::isinf;
+using ::isnan;
+
 //Register the DTW module with the Classifier base class
 RegisterClassifierModule< DTW > DTW::registerModule("DTW");
 
@@ -605,7 +608,7 @@ double DTW::computeDistance(MatrixDouble &timeSeriesA,MatrixDouble &timeSeriesB,
     //Run the recursive search function to build the cost matrix
     double distance = sqrt( d(M-1,N-1,distanceMatrix,M,N) );
 
-    if( std::isinf(distance) || std::isnan(distance) ){
+    if( isinf(distance) || isnan(distance) ){
         warningLog << "DTW computeDistance(...) - Distance Matrix Values are INF!" << endl;
         return INFINITY;
     }
@@ -670,7 +673,7 @@ double DTW::d(int m,int n,MatrixDouble &distanceMatrix,const int M,const int N){
     //The following is based on Matlab code by Eamonn Keogh and Michael Pazzani
     
     //If this cell is NAN then it has already been flagged as unreachable
-    if( std::isnan( distanceMatrix[m][n] ) ){
+    if( isnan( distanceMatrix[m][n] ) ){
         return NAN;
     }
 

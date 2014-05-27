@@ -22,6 +22,8 @@
 
 namespace GRT {
 
+using ::isinf;
+
 //Default constructor
 HiddenMarkovModel::HiddenMarkovModel(){
 	numStates = 0;
@@ -378,7 +380,7 @@ bool HiddenMarkovModel::forwardBackward(HMMTrainingObject &hmm,const vector<UINT
     for(t=0; t<T; t++) hmm.pk += log( hmm.c[t] );
     //hmm.pk = - hmm.pk; //We don't really need to minus here
     
-    if( std::isinf(hmm.pk) ){
+    if( isinf(hmm.pk) ){
         return false;
     }
     

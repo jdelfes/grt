@@ -22,6 +22,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 namespace GRT{
 
+using ::isinf;
+using ::isnan;
+
 //Register the LogisticRegression module with the Classifier base class
 RegisterRegressifierModule< LogisticRegression >  LogisticRegression::registerModule("LogisticRegression");
 
@@ -171,7 +174,7 @@ bool LogisticRegression::train_(RegressionData &trainingData){
             keepTraining = false;
         }
         
-        if( std::isinf( totalSquaredTrainingError ) || std::isnan( totalSquaredTrainingError ) ){
+        if( isinf( totalSquaredTrainingError ) || isnan( totalSquaredTrainingError ) ){
             errorLog << "train_(RegressionData &trainingData) - Training failed! Total squared error is NAN. If scaling is not enabled then you should try to scale your data and see if this solves the issue." << endl;
             return false;
         }

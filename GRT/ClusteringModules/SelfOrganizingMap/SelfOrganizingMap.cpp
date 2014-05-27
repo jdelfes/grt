@@ -21,7 +21,9 @@
 #include "SelfOrganizingMap.h"
 
 namespace GRT{
-    
+
+using ::isinf;
+
 //Register the SelfOrganizingMap class with the Clusterer base class
 RegisterClustererModule< SelfOrganizingMap > SelfOrganizingMap::registerModule("SelfOrganizingMap");
 
@@ -267,7 +269,7 @@ bool SelfOrganizingMap::train_( MatrixDouble &data ){
             keepTraining = false;
         }
         
-        if( std::isinf( error ) ){
+        if( isinf( error ) ){
             errorLog << "train_(MatrixDouble &data) - Training failed! Error is NAN!" << endl;
             return false;
         }
