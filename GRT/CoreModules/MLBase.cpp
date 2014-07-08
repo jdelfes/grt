@@ -443,4 +443,19 @@ bool MLBase::loadBaseSettingsFromFile(fstream &file){
     return true;
 }
 
+double MLBase::getMinChange() const
+{
+	return minChange;
+}
+
+bool MLBase::getUseValidationSet() const
+{
+	return useValidationSet;
+}
+
+bool MLBase::getRandomiseTrainingOrder() const
+{
+	return randomiseTrainingOrder;
+}
+
 } //End of namespace GRT
