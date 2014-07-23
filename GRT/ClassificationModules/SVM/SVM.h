@@ -314,6 +314,8 @@ public:
      return returns true if the kFoldValue was set, false otherwise
      */
     bool setKFoldCrossValidationValue(const UINT kFoldValue);
+
+	void setClassificationThreshold(double threshold);
     
     /**
      Sets if the gamma parameter will be automatically computed from the training data.

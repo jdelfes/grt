@@ -1101,6 +1101,11 @@ bool SVM::setKFoldCrossValidationValue(const UINT kFoldValue){
     warningLog << "setKFoldCrossValidationValue(const UINT kFoldValue) - Failed to set kFoldValue, the kFoldValue must be greater than 0!" << endl;
     return false;
 }
+
+void SVM::setClassificationThreshold(double threshold)
+{
+	classificationThreshold = threshold;
+}
     
 bool SVM::enableAutoGamma(const bool useAutoGamma){
     this->useAutoGamma = useAutoGamma;
