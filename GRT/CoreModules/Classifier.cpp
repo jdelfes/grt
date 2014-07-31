@@ -253,7 +253,7 @@ bool Classifier::saveBaseSettingsToFile(fstream &file) const{
         file << "NumClasses: " << numClasses << endl;
         
         file << "NullRejectionThresholds: ";
-        if( useNullRejection ){
+		if (useNullRejection && nullRejectionThresholds.size()){
             for(UINT i=0; i<nullRejectionThresholds.size(); i++){
                 file << " " << nullRejectionThresholds[i];
             }
