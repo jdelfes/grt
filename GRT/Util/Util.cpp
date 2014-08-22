@@ -25,7 +25,7 @@ namespace GRT{
 bool Util::sleep(const unsigned int &numMilliseconds){
     
 #if defined( __GRT_WINDOWS_BUILD__ )
-    Sleep( numMilliseconds );
+    //Sleep( numMilliseconds );
     return true;
 #endif
     
